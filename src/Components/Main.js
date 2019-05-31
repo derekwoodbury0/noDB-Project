@@ -8,14 +8,24 @@ export default class Main extends Component {
         super()
 
         this.state = {
-            books: []
+            books: [],
+            totalPages: 0
         }
     }
-
+    
     componentDidMount() {
         axios.get('/api/books').then( (res) => {
             this.setState ({ books: res.data})
+            this.pageCount()
         }).catch(err => console.log(err))
+    }
+            
+    pageCount = () => {
+        let totalPageCount = this.state.books.reduce((total, element) => {
+            return total + element.pages
+        }, 0)
+        this.setState ({ totalPages: totalPageCount})
+        console.log(this.state.totalPages)
     }
 
     addBook = (newBook) => {
@@ -36,10 +46,11 @@ export default class Main extends Component {
         }).catch(err => console.log(err))
     }
 
+
     render() {
         return (
             <div className="main">
-                <AddBook addBook={this.addBook}/>
+                <AddBook addBook={this.addBook} totalPages={this.state.totalPages}/>
                 <div className="displayBox">
                 {this.state.books.map( book => {
                     return (

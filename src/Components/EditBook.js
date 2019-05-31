@@ -37,7 +37,7 @@ export default class EditBook extends Component {
 
     render() {
         return (
-            <div>
+            <div className="editForm">
                 <input 
                     type="text"
                     name="title"
@@ -59,8 +59,10 @@ export default class EditBook extends Component {
                     placeholder="genre"
                     onChange={(event) => this.handleGenreChange(event.target.value)}
                 />
-                <button onClick={this.updateForm}>Update</button>
-                <button onClick={this.props.toggleEdit}>Cancel</button>
+                <div>
+                    <button onClick={this.updateForm}>Update</button>
+                    <button onClick={this.props.toggleEdit}>Cancel</button>
+                </div>
             </div>
         )
     }

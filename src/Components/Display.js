@@ -22,14 +22,16 @@ export default class Display extends Component {
                 <h2>{book.author}</h2>
                 <h3>{book.genre}</h3>
                 <img src={book.imageUrl} alt="Book Cover" width="200px" height="300px"/>
-                {this.state.edit ? 
-                    <EditBook book={book} toggleEdit={this.toggleEdit} updateBook={this.props.updateBook}/>
-                :
-                    <div>
-                        <button onClick={this.toggleEdit}>Edit</button>
-                    </div>
-                }
-                <button onClick={this.props.deleteBook}>Delete</button>
+                <div className="bookButtons">
+                    {this.state.edit ? 
+                        <EditBook book={book} toggleEdit={this.toggleEdit} updateBook={this.props.updateBook}/>
+                    :
+                        <div>
+                            <button onClick={this.toggleEdit}>Edit</button>
+                            <button onClick={this.props.deleteBook}>Delete</button>
+                        </div>
+                    }
+                </div>
             </div>
         )
     }

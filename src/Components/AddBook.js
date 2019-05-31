@@ -8,6 +8,7 @@ export default class AddBook extends Component {
             title: '',
             author: '',
             genre: '',
+            pages: 0,
             imageUrl: '',
         }
     }
@@ -32,11 +33,11 @@ export default class AddBook extends Component {
     render() {
         return (
             <div className="addBook">
+                <h1 style={{marginBottom: '100px'}}>Total Pages On<br></br>Your Shelf:<br></br>{this.props.totalPages}</h1>
                 <h1 style={{marginBottom: '50px'}}>Add Book!</h1>
                 <input
                     className="addBookInput" 
                     placeholder="Title" 
-                    style={{marginBottom: '15px'}}
                     type="text"
                     name="title"
                     value={this.state.title}
@@ -45,7 +46,6 @@ export default class AddBook extends Component {
                 <input 
                     className="addBookInput" 
                     placeholder="Author" 
-                    style={{marginBottom: '15px'}}
                     type="text"
                     name="author"
                     value={this.state.author}
@@ -54,16 +54,21 @@ export default class AddBook extends Component {
                 <input 
                     className="addBookInput" 
                     placeholder="Genre" 
-                    style={{marginBottom: '15px'}}
                     type="text"
                     name="genre"
                     value={this.state.genre}
                     onChange={this.handleChange}    
                 />
+                <input
+                    className="addBookInput"
+                    placeholder="Number of Pages"
+                    type="number"
+                    // value={this.state.pages}
+                    onChange={this.handleChange}
+                />
                 <input 
                     className="addBookInput" 
                     placeholder="Image URL" 
-                    style={{marginBottom: '15px'}}
                     type="text"
                     name="imageUrl"
                     value={this.state.imageUrl}

@@ -6,6 +6,7 @@ let books = [
         title: 'Harry Potter And The Goblet Of Fire',
         author: 'JK Rowling',
         genre: 'Young Adult',
+        pages: 636,
         imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEGpdfTkZXnlLPiiiTRWL6alN3jJfavzFeSOZPvwT80P8tAB4K"
     },
     {
@@ -13,6 +14,7 @@ let books = [
         title: 'Game Of Thrones',
         author: 'George RR Martin',
         genre: 'Fantasy',
+        pages: 694,
         imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8Nk_b7e3aHkHMCp-WPrkNcp3ZzraoeRAOflF_SxyepfdbyYzj'
     }
 ]
