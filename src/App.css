@@ -13,98 +13,131 @@
   }
 }
 
+@keyframes menu-icon {
+  0% { opacity: 0}
+  100% {opacity: 1}
+}
+
 .App {
-    text-align: center;
-    height: 100vh;
-    width: 100vw;
-    background: rgb(148, 137, 137);
-    background-image: url(https://i.pinimg.com/originals/ea/3f/d3/ea3fd3102ccf575e3c33954f73eab78d.jpg);
+  text-align: center;
+  height: 100vh;
+  width: 100vw;
+  background: rgb(148, 137, 137);
+  background-image: url(https://i.pinimg.com/originals/ea/3f/d3/ea3fd3102ccf575e3c33954f73eab78d.jpg);
+  font-family: 'Fredericka the Great', cursive;
+}
 
-  }
+button {
+  width: 100px;
+  height: 30px;
+  margin-bottom: 10px;
+  background: rgb(59, 56, 56);
+  border-color: gray;
+  color: white;
+}
 
-  button {
-    width: 100px;
-    height: 30px;
-    margin-bottom: 10px;
-  }
+button:hover {
+  background: darkgray
+}
 
-  input {
-    height: 30px;
-    width: 200px;
-    margin: 5px;
-  }
+input {
+  height: 30px;
+  width: 200px;
+  margin: 5px;
+  background: black;
+  border-color: white;
+  color: white
+}
 
-  .header {
-    height: 10vh;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    color: white;
-    /* background: black; */
-  }
-  
-    .logo {
-      animation: spin 500ms;
-      animation-iteration-count: infinite;
-      animation-timing-function: linear;
-      color: red;
-    }
+.header {
+  height: 10vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+  font-size: 5vw;
+  font-family: 'Fredericka the Great', cursive;
+}
     
-    .main {
-      height: 90vh;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-size: 100%;
-  }
+#logo:hover {
+  color: rgb(39, 32, 32) !important;
+  animation: spin 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
 
-  .addBook {
-      height: 100%;
-      width: 25%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 5px;
-      color: gray;
-  }
+#menu-icon {
+  animation: menu-icon 4s;
+}
 
-  .addBookInput {
-    width: 75%;
-    text-align: center;
-    margin-bottom: 15px;
-  }
+#menu-icon:hover {
+  animation: menu-icon-hover 2s infinite;
+  color: gray;
+}
 
-  .book {
-      width: 50%;
-      height: 550px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      color: white;
-      margin-bottom: 50px;
-  }
+.main {
+  height: 90vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-size: 100%;
+}
 
-  .bookButtons {
-    display: flex;
-    /* flex-direction: column; */
-  }
+.displayBox::-webkit-scrollbar { 
+  width: 0 !important }
 
-  .editForm {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.addBook {
+  height: 100%;
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  color: gray;
+  font-size: 2vw;
+}
 
-  }
+.addBookInput {
+  width: 75%;
+  text-align: center;
+  margin-bottom: 15px;
+}
 
-  .displayBox {
-    display: flex;
-    /* flex-direction: column; */
-    flex-wrap: wrap;
-    align-items: flex-start;
-    width: 75%;
-    height: 90vh;
-    align-items: center;
-    overflow-y: auto;
+#add-random {
+  margin: 10px;
+}
 
-  }
+.book {
+  width: 50%;
+  height: 550px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  margin-bottom: 100px;
+}
+
+.editForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.displayBox {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 60%;
+  height: 90vh;
+  align-items: center;
+  overflow-y: auto;
+  padding-top: 2%;
+  font-size: 1.5vw;
+}
+
+.rightSideDisplay {
+  width: 25%;
+  height: 90vh;
+}
