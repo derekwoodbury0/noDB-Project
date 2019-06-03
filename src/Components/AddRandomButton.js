@@ -1,12 +1,11 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export default class AddRandomButton extends Component {
-    render() {
-        return (
-            <button id="add-random"
-                onClick={this.props.addRandomBook}
-            >
-                {this.props.buttonText}</button>
-        )
-    }
+function AddRandomButton(props) {
+    return <button id="add-random"
+            onClick={props.addRandomBook}
+        >
+            {props.buttonText}
+        </button>
 }
+
+export default AddRandomButton

@@ -18,8 +18,8 @@ export default class Display extends Component {
         let { book } = this.props
         return (
             <div className="book">
-                <h2>{book.title}</h2>
-                <h3>{book.author}</h3>
+                <h2 style={{marginBottom: '15px'}}>{book.title}</h2>
+                <h3 style={{marginBottom: '10px'}}>{book.author}</h3>
                 <h4>{book.genre}</h4>
                 <img src={book.imageUrl} alt="Book Cover" width="200px" height="300px"/>
                 <div className="bookButtons">

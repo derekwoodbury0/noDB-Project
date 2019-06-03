@@ -1,5 +1,3 @@
-// let {randomFictionBooks, randomNonFictionBooks } = require('./randomBooks')
-
 let id = 1
 
 let books = [
@@ -46,16 +44,6 @@ module.exports = {
         books.splice(index, 1)
         res.send(books)
     },
-    // getRandomFictionBook: (req, res) => {
-    //     let { id } = req.params
-    //     let index = randomFictionBooks.findIndex(book => +book.id === +id)
-    //     res.send(randomFictionBooks[index])
-    // },
-    // getRandomNonFictionBook: (req, res) => {
-    //     let { id } = req.params
-    //     let index = randomNonFictionBooks.findIndex(book => +book.id === +id)
-    //     res.send(randomNonFictionBooks[index])
-    // },
     getBySearch: (req, res) => {
         let search = req.query.title.toLowerCase()
 

@@ -31,12 +31,12 @@ export default class Main extends Component {
         axios.get('https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=ltq5v5nWenzDUaX0TGpRNvO5IFkshMcH')
             .then(res => {
                 this.setState ({fictionBooks: res.data.results.books})
-             })
+             }).catch(err => console.log(err))
 
         axios.get('https://api.nytimes.com/svc/books/v3/lists/current/hardcover-nonfiction.json?api-key=ltq5v5nWenzDUaX0TGpRNvO5IFkshMcH')
     .then(res => {
         this.setState ({nonFictionBooks: res.data.results.books})
-        })
+        }).catch(err => console.log(err))
     }
     
     
@@ -50,7 +50,7 @@ export default class Main extends Component {
     addBook = (newBook) => {
         axios.post('/api/books', newBook).then( res => {
             this.setState ({books: res.data })
-        })
+        }).catch(err => console.log(err))
     }
 
     updateBook = (updatedBook) => {
@@ -68,7 +68,7 @@ export default class Main extends Component {
     searchBook = (newSearch) => {
         axios.get(`./api/books/search/?title=${newSearch}`).then(res => {
             this.setState ({ books: res.data })
-        })
+        }).catch(err => console.log(err))
     }
 
     async addRandomFictionBook() {
@@ -76,11 +76,12 @@ export default class Main extends Component {
         let randomBook
         await axios.get('https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=ltq5v5nWenzDUaX0TGpRNvO5IFkshMcH').then(res => {
             let {title, author, book_image} = res.data.results.books[randomNumber]
-            randomBook = {title: title, author: author, imageUrl: book_image, genre: 'Fiction'}
-        })
+            randomBook = {title, author, imageUrl: book_image, genre: 'Fiction'}
+        }).catch(err => console.log(err))
+        
         axios.post('/api/books', randomBook).then(res => {
             this.setState ({ books: res.data })
-        })
+        }).catch(err => console.log(err))
     }
 
     async addRandomNonFictionBook() {
@@ -88,11 +89,12 @@ export default class Main extends Component {
         let randomBook
         await axios.get('https://api.nytimes.com/svc/books/v3/lists/current/hardcover-nonfiction.json?api-key=ltq5v5nWenzDUaX0TGpRNvO5IFkshMcH').then(res => {
             let {title, author, book_image} = res.data.results.books[randomNumber]
-            randomBook = {title: title, author: author, imageUrl: book_image, genre: 'Non-Fiction'}
-        })
+            randomBook = {title, author, imageUrl: book_image, genre: 'Non-Fiction'}
+        }).catch(err => console.log(err))
+
         axios.post('/api/books', randomBook).then(res => {
             this.setState ({ books: res.data })
-        })
+        }).catch(err => console.log(err))
     }
 
     toggleEdit = () => {
