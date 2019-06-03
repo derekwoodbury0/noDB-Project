@@ -27,15 +27,15 @@ export default class Main extends Component {
             this.setState ({ books: res.data})
             this.calculateTotalBooks()
         }).catch(err => console.log(err))
-
+        
         axios.get('https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=ltq5v5nWenzDUaX0TGpRNvO5IFkshMcH')
-            .then(res => {
-                this.setState ({fictionBooks: res.data.results.books})
-             }).catch(err => console.log(err))
-
+        .then(res => {
+            this.setState ({fictionBooks: res.data.results.books})
+        }).catch(err => console.log(err))
+        
         axios.get('https://api.nytimes.com/svc/books/v3/lists/current/hardcover-nonfiction.json?api-key=ltq5v5nWenzDUaX0TGpRNvO5IFkshMcH')
-    .then(res => {
-        this.setState ({nonFictionBooks: res.data.results.books})
+        .then(res => {
+            this.setState ({nonFictionBooks: res.data.results.books})
         }).catch(err => console.log(err))
     }
     
@@ -117,7 +117,7 @@ export default class Main extends Component {
                         {this.state.toggle ?
                             <button onClick={() => {
                                 this.componentDidMount()
-                                this.toggleEdit()  
+                                this.toggleEdit()
                                 }}
                             >Cancel</button>
                         :
@@ -140,7 +140,7 @@ export default class Main extends Component {
                             )
                         })}
                 </div>
-                <div className="rightSideDisplay">
+                <div className="right-side-display">
                     <h1 style={{marginBottom: '5%'}}>New York Times Bestsellers</h1>
                     <h2 style={{marginBottom: '3%'}}>Fiction</h2>
                     <ol>
