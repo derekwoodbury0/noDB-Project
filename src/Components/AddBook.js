@@ -33,7 +33,7 @@ export default class AddBook extends Component {
     render() {
         return (
             <div className="addBook">
-                <h1 style={{marginBottom: '5vh', marginBottom: '10vh', fontSize: '1.8vw'}}>Total Books: {this.props.bookCount}</h1>
+                <h1 style={{marginBottom: '5vh', paddingBottom: '8vh', fontSize: '1.8vw'}}>Total Books: {this.props.bookCount}</h1>
                 <h1 style={{marginBottom: '5%', fontSize: '3vw'}}>Add Book!</h1>
                 <input
                     className="addBookInput" 

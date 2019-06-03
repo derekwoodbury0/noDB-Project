@@ -123,14 +123,18 @@ export default class Main extends Component {
                                 this.componentDidMount()
                                 this.toggleEdit()
                                 }}
-                            >Cancel</button>
+                            >
+                                Cancel
+                            </button>
                         :
                             <button onClick={ () => {
                                 let newSearch = this.state.search
                                 this.searchBook(newSearch)
                                 this.toggleEdit()
                                 }}
-                            >Search</button>
+                            >
+                                Search
+                            </button>
                         }
                     </div>
                 
@@ -158,7 +162,7 @@ export default class Main extends Component {
                     </ol>
                     <h2 style={{marginBottom: '3%', marginTop: '10%'}}>Non-Fiction</h2>
                     <ol>
-                        {this.state.nonFictionBooks.map( book => {
+                        {this.state.nonFictionBooks.map( (book) => {
                             return (
                                 <BestSellers
                                     book={book}

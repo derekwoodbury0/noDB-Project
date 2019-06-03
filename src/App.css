@@ -19,7 +19,7 @@
 }
 
 @keyframes fontbulger {
-  0%, 25%, 75%, 100% {
+  0%, 35%, 65%, 100% {
     color: red;
   }
   50% {
@@ -69,7 +69,7 @@ input {
 }
 
 #logo {
-  animation: fontbulger 7s infinite;
+  animation: fontbulger 10s infinite;
 }
     
 #logo:hover {
