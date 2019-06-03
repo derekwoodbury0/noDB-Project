@@ -25,7 +25,6 @@ export default class Main extends Component {
     componentDidMount() {
         axios.get('/api/books').then( (res) => {
             this.setState ({ books: res.data})
-            this.calculateTotalBooks()
         }).catch(err => console.log(err))
         
         axios.get('https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=ltq5v5nWenzDUaX0TGpRNvO5IFkshMcH')
@@ -39,6 +38,11 @@ export default class Main extends Component {
         }).catch(err => console.log(err))
     }
     
+    componentDidUpdate(prevProps, prevState ) {
+        if (prevState.books.length !== this.state.books.length ) {
+            this.calculateTotalBooks()
+        }
+    }
     
     calculateTotalBooks = () => {
         let { books } = this.state
