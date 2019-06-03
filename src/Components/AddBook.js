@@ -10,7 +10,6 @@ export default class AddBook extends Component {
             author: '',
             genre: '',
             imageUrl: '',
-            pages: '',
         }
     }
 
@@ -27,7 +26,7 @@ export default class AddBook extends Component {
             
             this.props.addBook(newBook)
             
-            this.setState ({ title: '', author: '', genre: '', pages: '', imageUrl: ''})
+            this.setState ({ title: '', author: '', genre: '', imageUrl: ''})
         }
     }
 
@@ -35,7 +34,6 @@ export default class AddBook extends Component {
         return (
             <div className="addBook">
                 <h1 style={{marginBottom: '3vh', fontSize: '1.5vw'}}>Total Books: {this.props.bookCount}</h1>
-                <h1 style={{marginBottom: '10vh', fontSize: '1.5vw'}}>Total Pages: {this.props.pageCount}</h1>
                 <h1 style={{marginBottom: '5%', fontSize: '3vw'}}>Add Book!</h1>
                 <input
                     className="addBookInput" 
@@ -61,14 +59,6 @@ export default class AddBook extends Component {
                     value={this.state.genre}
                     onChange={this.handleChange}    
                 />
-                <input
-                    className="addBookInput"
-                    placeholder="Number of Pages"
-                    type="number"
-                    name="pages"
-                    value={this.state.pages}
-                    onChange={this.handleChange}
-                />
                 <input 
                     className="addBookInput" 
                     placeholder="Image URL" 
@@ -79,7 +69,7 @@ export default class AddBook extends Component {
                 />
 
                 <button onClick={this.handleClick}>Add!</button>
-                <h5 style={{marginBottom: '.5%', marginTop: '.5%'}}>or</h5>
+                <h5 style={{marginBottom: '.5%', marginTop: '.5%'}}>or <br/>Add A random book from the New York Times Bestsellers List</h5>
                 <div>
                     <AddRandomButton 
                         addRandomBook={this.props.addRandomFictionBook}
@@ -89,8 +79,6 @@ export default class AddBook extends Component {
                         addRandomBook={this.props.addRandomNonFictionBook}
                         buttonText='Add Random Non-Fiction Book'
                     />
-                    {/* <button onClick={this.props.addRandomFictionBook}>Add A Random Fiction Book!</button>
-                    <button onClick={this.props.addRandomNonFictionBook}>Add A Random Non-Fiction Book!</button> */}
                 </div>
             </div>
         )

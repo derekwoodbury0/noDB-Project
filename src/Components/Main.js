@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import AddBook from './AddBook'
 import Display from './Display'
+import BestSellers from './BestSellers'
 
 export default class Main extends Component {
     constructor() {
@@ -10,11 +11,10 @@ export default class Main extends Component {
         this.state = {
             books: [],
             bookCount: 0,
-            pageCount: 0,
             search: '',
             toggle: false,
-            nonFictionBooks: [],
-            fictionBooks: []
+            fictionBooks: [],
+            nonFictionBooks: []
         }
 
         this.addRandomFictionBook = this.addRandomFictionBook.bind(this)
@@ -25,14 +25,19 @@ export default class Main extends Component {
     componentDidMount() {
         axios.get('/api/books').then( (res) => {
             this.setState ({ books: res.data})
-            this.pageCount()
             this.calculateTotalBooks()
         }).catch(err => console.log(err))
 
+        axios.get('https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=ltq5v5nWenzDUaX0TGpRNvO5IFkshMcH')
+            .then(res => {
+                this.setState ({fictionBooks: res.data.results.books})
+             })
+
         axios.get('https://api.nytimes.com/svc/books/v3/lists/current/hardcover-nonfiction.json?api-key=ltq5v5nWenzDUaX0TGpRNvO5IFkshMcH')
-        .then(res => this.setState
-            console.log(res.data.results.books))
-    }
+    .then(res => {
+        this.setState ({nonFictionBooks: res.data.results.books})
+        })
+}
     
     
     calculateTotalBooks = () => {
@@ -40,13 +45,6 @@ export default class Main extends Component {
         let totalBooks = books.length
 
         this.setState ({ bookCount: totalBooks})
-    }
-    
-    pageCount = () => {
-        let totalPageCount = this.state.books.reduce((total, element) => {
-            return +total + +element.pages
-        }, 0)
-        this.setState ({ pageCount: totalPageCount})
     }
 
     addBook = (newBook) => {
@@ -74,10 +72,11 @@ export default class Main extends Component {
     }
 
     async addRandomFictionBook() {
-        const randomNumber = Math.floor(Math.random()* 10 + 1)
+        const randomNumber = Math.floor(Math.random() * 15)
         let randomBook
-        await axios.get(`/api/books/fiction/${randomNumber}`).then(res => {
-            randomBook = res.data
+        await axios.get('https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=ltq5v5nWenzDUaX0TGpRNvO5IFkshMcH').then(res => {
+            let {title, author, book_image} = res.data.results.books[randomNumber]
+            randomBook = {title: title, author: author, imageUrl: book_image, genre: 'Fiction'}
         })
         axios.post('/api/books', randomBook).then(res => {
             this.setState ({ books: res.data })
@@ -85,10 +84,11 @@ export default class Main extends Component {
     }
 
     async addRandomNonFictionBook() {
-        const randomNumber = Math.floor(Math.random()* 10 + 1)
+        const randomNumber = Math.floor(Math.random() * 15)
         let randomBook
-        await axios.get(`/api/books/nonfiction/${randomNumber}`).then(res => {
-            randomBook = res.data
+        await axios.get('https://api.nytimes.com/svc/books/v3/lists/current/hardcover-nonfiction.json?api-key=ltq5v5nWenzDUaX0TGpRNvO5IFkshMcH').then(res => {
+            let {title, author, book_image} = res.data.results.books[randomNumber]
+            randomBook = {title: title, author: author, imageUrl: book_image, genre: 'Non-Fiction'}
         })
         axios.post('/api/books', randomBook).then(res => {
             this.setState ({ books: res.data })
@@ -138,7 +138,29 @@ export default class Main extends Component {
                             )
                         })}
                 </div>
-                <div className="rightSideDisplay"></div>
+                <div className="rightSideDisplay">
+                    <h3 style={{marginBottom: '5%'}}>New York Times Bestsellers Lists</h3>
+                    <h4 style={{marginBottom: '3%'}}>Fiction</h4>
+                    <ol>
+                        {this.state.fictionBooks.map( book => {
+                            return (
+                                <BestSellers 
+                                    book={book}
+                                />
+                            )
+                        })}
+                    </ol>
+                    <h4 style={{marginBottom: '3%', marginTop: '10%'}}>Non-Fiction</h4>
+                    <ol>
+                        {this.state.nonFictionBooks.map( book => {
+                            return (
+                                <BestSellers
+                                    book={book}
+                                />
+                            )
+                        })}
+                    </ol>
+                </div>
             </div>
         )
     }
