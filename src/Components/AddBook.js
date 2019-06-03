@@ -69,7 +69,7 @@ export default class AddBook extends Component {
                 />
 
                 <button onClick={this.handleClick}>Add!</button>
-                <h5 style={{marginBottom: '.5%', marginTop: '.5%'}}>or <br/>Add A random book from the New York Times Bestsellers List</h5>
+                <h5 style={{marginBottom: '.5%', marginTop: '.5%'}}>or <br/>Add A Random Bestseller</h5>
                 <div>
                     <AddRandomButton 
                         addRandomBook={this.props.addRandomFictionBook}

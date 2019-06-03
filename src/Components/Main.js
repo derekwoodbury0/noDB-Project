@@ -37,7 +37,7 @@ export default class Main extends Component {
     .then(res => {
         this.setState ({nonFictionBooks: res.data.results.books})
         })
-}
+    }
     
     
     calculateTotalBooks = () => {
@@ -139,8 +139,8 @@ export default class Main extends Component {
                         })}
                 </div>
                 <div className="rightSideDisplay">
-                    <h3 style={{marginBottom: '5%'}}>New York Times Bestsellers Lists</h3>
-                    <h4 style={{marginBottom: '3%'}}>Fiction</h4>
+                    <h1 style={{marginBottom: '5%'}}>New York Times Bestsellers</h1>
+                    <h2 style={{marginBottom: '3%'}}>Fiction</h2>
                     <ol>
                         {this.state.fictionBooks.map( book => {
                             return (
@@ -150,7 +150,7 @@ export default class Main extends Component {
                             )
                         })}
                     </ol>
-                    <h4 style={{marginBottom: '3%', marginTop: '10%'}}>Non-Fiction</h4>
+                    <h2 style={{marginBottom: '3%', marginTop: '10%'}}>Non-Fiction</h2>
                     <ol>
                         {this.state.nonFictionBooks.map( book => {
                             return (
