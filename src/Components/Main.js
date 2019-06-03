@@ -144,7 +144,7 @@ export default class Main extends Component {
                             )
                         })}
                 </div>
-                <div className="right-side-display">
+                <section className="right-side-display">
                     <h1 style={{marginBottom: '5%'}}>New York Times Bestsellers</h1>
                     <h2 style={{marginBottom: '3%'}}>Fiction</h2>
                     <ol>
@@ -166,7 +166,7 @@ export default class Main extends Component {
                             )
                         })}
                     </ol>
-                </div>
+                </section>
             </div>
         )
     }
