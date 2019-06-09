@@ -19,7 +19,7 @@
 }
 
 @keyframes fontbulger {
-  0%, 35%, 65%, 100% {
+  0%, 35%, 75%, 100% {
     color: red;
   }
   50% {
@@ -59,7 +59,7 @@ input {
 }
 
 .header {
-  height: 10vh;
+  height: 12vh;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -69,7 +69,7 @@ input {
 }
 
 #logo {
-  animation: fontbulger 10s infinite;
+  animation: fontbulger 7s infinite;
 }
     
 #logo:hover {
@@ -89,7 +89,7 @@ input {
 }
 
 .main {
-  height: 90vh;
+  height: 88vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -140,7 +140,7 @@ input {
   flex-direction: column;
   align-items: flex-start;
   width: 40%;
-  height: 85vh;
+  height: 83vh;
   margin-top: 5vh;
   align-items: center;
   overflow-y: auto;
@@ -155,7 +155,7 @@ input {
   .right-side-display {
     margin-top: 3vh;
     width: 30%;
-    height: 87vh;
+    height: 85vh;
     overflow-y: auto;
     display: flex;
     flex-direction: column;

@@ -105,6 +105,19 @@ export default class Main extends Component {
         this.setState ({ toggle: !this.state.toggle })
     }
 
+    keyPressed = (e) => {
+        if (e.key === 'Enter') {
+            if (this.state.toggle === false) {
+                let newSearch = this.state.search
+                this.searchBook(newSearch)
+                this.toggleEdit()
+            } else if (this.state.toggle === true) {
+                this.componentDidMount()
+                this.toggleEdit()
+            }
+        }
+    }
+
     render() {
         return (
             <div className="main">
@@ -117,22 +130,23 @@ export default class Main extends Component {
                 <div className="displayBox">
                     <div>
                         <input placeholder="Search Titles" onChange={ event => this.setState({ search: event.target.value })}
+                                onKeyPress={this.keyPressed}
                         />
                         {this.state.toggle ?
                             <button onClick={() => {
                                 this.componentDidMount()
                                 this.toggleEdit()
                                 }}
-                            >
+                                >
                                 Cancel
                             </button>
                         :
-                            <button onClick={ () => {
-                                let newSearch = this.state.search
-                                this.searchBook(newSearch)
-                                this.toggleEdit()
-                                }}
-                            >
+                        <button onClick={ () => {
+                            let newSearch = this.state.search
+                            this.searchBook(newSearch)
+                            this.toggleEdit()
+                        }}
+                        >
                                 Search
                             </button>
                         }
